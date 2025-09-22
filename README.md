@@ -75,6 +75,38 @@ This will:
 stop-xibo.bat
 ```
 
+## Installing Xibo Players on Displays
+
+To display content on screens, you need to install Xibo players on your display devices:
+
+### Quick Player Setup
+
+**For Raspberry Pi:**
+```bash
+# Download Xibo Pi OS (recommended)
+wget https://github.com/xibosignage/xibo-pi-os/releases/latest/download/xibo-pi-os.img.xz
+# Flash to SD card and boot
+```
+
+**For Windows/Linux:**
+```bash
+# Download player from Xibo website
+# Install and configure to connect to your CMS
+```
+
+**For Thin Clients:**
+- Use the appropriate player for your OS
+- Configure auto-start and auto-login
+- Connect to your CMS server
+
+### Player Configuration
+1. Set CMS address to your server IP/domain
+2. Give display a descriptive name
+3. Approve display in CMS admin panel
+4. Assign display profile and schedule
+
+📖 **Complete Player Installation Guide**: See `XIBO-PLAYER-INSTALLATION.md` for detailed instructions for all platforms.
+
 ## Manual Installation
 Full installation instructions for supported use of these containers can be
 found in the [Xibo
@@ -124,6 +156,7 @@ xibo-docker/
 ├── config.env                 # Your configuration (create this)
 ├── PRODUCTION-DEPLOYMENT.md   # Production deployment guide
 ├── DEBIAN-DEPLOYMENT.md       # Debian-specific deployment guide
+├── XIBO-PLAYER-INSTALLATION.md # Player installation guide
 └── shared/                    # Data directory
     ├── db/                    # Database files
     ├── backup/                # Database backups
