@@ -7,7 +7,75 @@ CMS with recommended configuration.
 This repository holds the docker container definitions for Xibo and the docker-compose
 configuration, which is used to bootstrap, start, stop and destroy the installation.
 
-## Installation
+## Quick Start (Recommended)
+
+### Prerequisites
+- Docker and Docker Compose installed
+- Git (to clone this repository)
+
+### Installation Steps
+
+1. **Clone this repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd xibo-docker
+   ```
+
+2. **Configure the environment:**
+   ```bash
+   cp config.env.template config.env
+   # Edit config.env with your settings (especially MYSQL_PASSWORD)
+   ```
+
+3. **Start Xibo (Choose your platform):**
+
+   **For Linux/macOS:**
+   ```bash
+   chmod +x start-xibo.sh
+   ./start-xibo.sh
+   ```
+
+   **For Windows:**
+   ```cmd
+   start-xibo.bat
+   ```
+
+4. **Access Xibo:**
+   - Open your browser to `http://localhost`
+   - Complete the Xibo setup wizard
+
+### Optional: Nginx Reverse Proxy Setup
+
+For production deployments with SSL and better security:
+
+```bash
+# Make the setup script executable (Linux/macOS)
+chmod +x setup-nginx.sh
+
+# Run the Nginx setup script
+sudo ./setup-nginx.sh
+```
+
+This will:
+- Install Nginx and Certbot
+- Configure SSL with Let's Encrypt
+- Set up proper security headers
+- Configure WebSocket support for XMR
+- Set up automatic SSL renewal
+
+### Stopping Xibo
+
+**For Linux/macOS:**
+```bash
+./stop-xibo.sh
+```
+
+**For Windows:**
+```cmd
+stop-xibo.bat
+```
+
+## Manual Installation
 Full installation instructions for supported use of these containers can be
 found in the [Xibo
 Manual](http://xibo.org.uk/manual-tempel/en/install_cms.html)
@@ -41,6 +109,28 @@ If you have your own docker environment you may want to run without the
 automation provided by docker-compose. If this is the case you will be responsible
 for pulling the docker containers, starting them and manually installing Xibo.
 
+
+## File Structure
+```
+xibo-docker/
+├── start-xibo.sh              # Linux startup script
+├── start-xibo.bat             # Windows startup script
+├── stop-xibo.sh               # Linux stop script
+├── stop-xibo.bat              # Windows stop script
+├── setup-nginx.sh             # Nginx reverse proxy setup script
+├── nginx-xibo.conf.template   # Nginx configuration template
+├── docker-compose.yml         # Docker Compose configuration
+├── config.env.template        # Environment template
+├── config.env                 # Your configuration (create this)
+├── PRODUCTION-DEPLOYMENT.md   # Production deployment guide
+├── DEBIAN-DEPLOYMENT.md       # Debian-specific deployment guide
+└── shared/                    # Data directory
+    ├── db/                    # Database files
+    ├── backup/                # Database backups
+    └── cms/                   # CMS files
+        ├── library/           # Media library
+        └── web/               # Web files
+```
 
 ## Reporting problems
 

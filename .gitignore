@@ -1,5 +1,30 @@
-.vagrant/
+# Environment configuration (contains sensitive data)
+config.env
+
+# Data directories (contain user data)
 shared/
-*.env
-docker-compose.override.yml
+
+# Docker volumes and data
+.docker/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
 .idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
